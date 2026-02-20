@@ -40,4 +40,8 @@ export class AccountService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
+  currentUserLogged() : boolean {
+    return !!this.currentUser();
+  }
+
 }
