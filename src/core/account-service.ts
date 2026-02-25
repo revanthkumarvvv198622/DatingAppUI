@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { User, UserLogin, UserRegister } from '../types/User';
 import { tap } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { tap } from 'rxjs';
 export class AccountService {
   //used to manage states and used as application singleton for user data and authentication
   private httpClient = inject(HttpClient);
-  baseUrl = 'https://localhost:5001/api/';
+  private baseUrl = environment.apiUrl;
   currentUser: WritableSignal<User | null> = signal(null);
 
   login(creds: UserLogin) {
